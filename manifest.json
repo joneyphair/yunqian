@@ -1,0 +1,20 @@
+{
+	"name": "36kr",
+	"version": "1.0",
+	"manifest_version":2,
+	"description": "36kr新闻媒体",
+	"browser_action": {
+		"default_icon": "logo.png",
+		"popup":"popup.html"
+	},
+	"permissions": [
+		"activeTab"
+	],
+    "background" : {
+	    "scripts" : ["background.js"],
+	    "persistent" : true
+	},
+	"chrome_url_overrides" : {
+		"newtab": "build/templates/index.html"
+	}
+}
