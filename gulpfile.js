@@ -14,9 +14,16 @@ gulp.task('dev:styles',function(){
 
 gulp.task('scripts:components',function(){
 
+	gulp.src('src/components/**')
+		.pipe(gulp.dest('build/components'));
+
 });
 
 gulp.task('dev:scripts',['scripts:components'],function(){
+
+	gulp.src('src/scripts/**.js')
+		.pipe(gulp.dest('build/scripts'));
+
 
 });
 

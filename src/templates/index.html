@@ -7,7 +7,6 @@
 </head>
 <body>
 
-
 	<div class="m-search">
 		<div class="container">
 		<form action="https://www.baidu.com/s?ie=utf-8&f=8&rsv_bp=0&rsv_idx=1&tn=baidu&rsv_pq=fb8c31a70003c30b&rsv_t=bff6EaWIQ087nd1zfeozMs1Kxh%2FSrw%2Bj5%2BhQ0%2F9kwa18lLN9Fi6MAUhCezc&rqlang=cn&rsv_enter=0&rsv_sug3=4&rsv_sug1=3&rsv_sug7=100&inputT=1313&rsv_sug4=1639" method="GET">
@@ -16,6 +15,17 @@
 		</form>
 		</div>
 	</div>
+
+	<div class="m-articles" id="mArticles">
+		<div class="container">
+			<div class="item" v-for="item in articles">
+				<a class="title">{{item.title}}</a>
+			</div>
+		</div>
+	</div>
+
+	<!-- <script src="../components/vue/dist/vue.min.js"></script> -->
+	<script src="../scripts/index.js"></script>
 
 </body>
 </html>
