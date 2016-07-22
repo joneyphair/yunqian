@@ -1,8 +1,8 @@
 {
-	"name": "36kr",
+	"name": "云签",
 	"version": "1.0",
 	"manifest_version":2,
-	"description": "36kr新闻媒体",
+	"description": "标签管理",
 	"browser_action": {
 		"default_icon": "logo.png",
 		"popup":"popup.html"
