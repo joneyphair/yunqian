@@ -1,30 +1,53 @@
-chrome.bookmarks.getTree(function callback(response){
-	console.log('-----',response);
 
-	var articleList = mapArticleList(response);
 
-	console.log('--hah',articleList);
+function init(){
 
-	var html = '<div class="container">';
+	chrome.bookmarks.getTree(function callback(response){
 
-	articleList.forEach(function(item,index){
+		var articleList = mapArticleList(response);
 
-		html+='<div class="item">';
-		html+='<a class="title" href="'+item.url+'" target="_blank">'
-		html+= item.title;
-		html+='</a>'
-		html+= '</div>';
+		console.log('--hah',articleList);
 
+		var html = '<div class="container">';
+
+		articleList.sort(function createTimeSort(a,b){
+			return parseInt(b.dateAdded) - parseInt(a.dateAdded);
+		}).forEach(function(item,index){
+
+			html+='<div class="item">\n';
+			html+='<div class="header">\n';
+			html+='<a class="title" href="' + item.url + '">\n';
+			html+= item.title;
+			html+='</a>\n';
+			html+='<span class="del" data-id="'+item.id+'">删除</span>';
+			html+= '</div>\n';
+			html+= '</div>\n';
+
+		});
+
+		html+='</div>';
+
+		var mArticles = document.getElementById('mArticles');
+
+		mArticles.innerHTML = html;
+
+		var delBtns = document.getElementsByClassName('del');
+
+		Array.prototype.concat.apply([],delBtns).forEach(function(item,index){
+			item.addEventListener('click',function(event){
+				action.delArticle(this.getAttribute('data-id'));
+				this.parentNode.parentNode.remove();
+			});
+		});
 	});
-
-	html+='</div>';
-
-	var mArticles = document.getElementById('mArticles');
-
-	mArticles.innerHTML = html;
+}
 
 
-});
+function delArticle(id){
+	chrome.bookmarks.remove(id,function success(){
+		console.log('删除成功');
+	});
+}
 
 
 
@@ -52,3 +75,13 @@ function mapArticleList(article){
 
 }
 
+
+
+
+var action = {};
+
+action.init = init;
+
+action.delArticle = delArticle;
+
+action.init();

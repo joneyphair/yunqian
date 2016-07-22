@@ -18,8 +18,11 @@
 
 	<div class="m-articles" id="mArticles">
 		<div class="container">
-			<div class="item" v-for="item in articles">
-				<a class="title">{{item.title}}</a>
+			<div class="item">
+				<div class="header">
+					<a class="title">{{item.title}}</a>
+					<span class="del">删除</span>
+				</div>
 			</div>
 		</div>
 	</div>

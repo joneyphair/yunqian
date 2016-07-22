@@ -47,7 +47,7 @@ body {
   display: inline-block;
   float: left;
 }
-.m-articles .title {
+.m-articles .header {
   padding-left: 10px;
   padding-right: 10px;
   color: #333;
@@ -55,4 +55,22 @@ body {
   line-height: 30px;
   display: block;
   overflow: hidden;
+  position: relative;
+}
+.m-articles .header:hover .del {
+  display: block;
+}
+.m-articles .title {
+  color: #333;
+}
+.m-articles .del {
+  display: none;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 50px;
+  line-height: 30px;
+  Background-color: #fff;
+  font-size: 12px;
+  text-align: center;
 }
